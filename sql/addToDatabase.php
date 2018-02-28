@@ -27,6 +27,8 @@ if(checkForStrings($first_name) && checkForStrings($last_name) && checkForEmails
                 VALUES ('$full_name','$email','$finalMD5','$salt')");
       if($query){
          $_SESSION['error'] = "1";  //Registered Successfully!
+         $_SESSION['loggedIn'] = true;
+         $_SESSION['lastActivity'] = time();
          header('Location: /PhpDemo/error.php');
       }
       else {

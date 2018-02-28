@@ -12,32 +12,32 @@
                     case 1:{
                         echo '<h1 style="">Success!!</h1>';
                         echo "Registered Successfully!";
-                        echo '<a href="amazon.php">Proceed</a>';
+                        echo '<a href="index.php">Proceed</a>';
                         break; 
                     }
                     case 2:{
                         echo '<h1 style="">Error</h1>';
                         echo "Unable to Register.<br>";
                         $_SESSION['error'] = 6;
-                        echo '<a href="index.php">Try Again</a>';
+                        echo '<a href="login.php">Try Again</a>';
                         break;
                     }
                     case 3:{
                         echo '<h1 style="">Success!!</h1>';
                         echo "Login Successful!";
-                        echo '<a href="amazon.php">Proceed</a>';
+                        echo '<a href="index.php">Proceed</a>';
                         break;
                     }
                     case 4:{
                         echo '<h1 style="">Alert!!</h1>';
                         echo "Typed password does not match";
                         $_SESSION['error'] = 5;
-                        echo '<a href="index.php">Try Again</a>';
+                        echo '<a href="login.php">Try Again</a>';
                         break;
                     }
                     default:{
                         echo '<h1 style="">Alert!!</h1>';
-                        echo 'Something went wrong.<br>Please <a href="index.php">Try Again</a>';
+                        echo 'Something went wrong.<br>Please <a href="login.php">Try Again</a>';
                         break;
                     }
                 }

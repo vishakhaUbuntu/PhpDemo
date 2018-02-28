@@ -115,13 +115,6 @@ $_SESSION['error'] = 0;
                         return false;
                     } 
             } 
-            function populateFields()
-            {
-                <?php 
-                echo "<script> var someVar = </script>". $_SESSION['userEmail'];
-                    ?>
-                            alert(someVar);
-            }
         </script>
         <?php
         if($_SESSION['error'] == 5){
@@ -139,7 +132,6 @@ $_SESSION['error'] = 0;
         if($_SESSION['userEmail'] && ($_SESSION['error'] == 0)){
             echo "<script type='text/javascript'>
                 hideRegister();
-                populateFields();
         </script>";
         }
         ?>

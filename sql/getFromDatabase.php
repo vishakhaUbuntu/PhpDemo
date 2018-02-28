@@ -1,6 +1,6 @@
 <?php 
-if(isset($_POST['emailLogin']))
-{
+//if(isset($_POST['emailLogin']))
+//{
     include_once 'connection.php';
     session_start();
     /*------------------Get the value of all the variables of a form--------------------*/
@@ -27,7 +27,6 @@ if(isset($_POST['emailLogin']))
         $saltFromDB = $userDetails['salt'];
         $password = md5($saltFromDB.$md5UserPass);
         if($password == $userDetails['password']){ 
-//          $LoginSuccess = true;
             if(isset($rememberMe))
             {
                 $_SESSION['userEmail']    = $email;
@@ -35,6 +34,8 @@ if(isset($_POST['emailLogin']))
             }
             $_SESSION['userName'] = explode(" ", $userDetails['full_name'])[0];
             $_SESSION['error'] = 3;//Login Successful
+            $_SESSION['loggedIn'] = true;
+            $_SESSION['lastActivity'] = time();
             header('location: /PhpDemo/error.php');
         }
         else {
@@ -42,8 +43,8 @@ if(isset($_POST['emailLogin']))
             header('location: /PhpDemo/error.php');
         }
     }
-}
- else {
-    header('location: /PhpDemo/index.php');
-}
+//}
+// else {
+//    header('location: /PhpDemo/index.php');
+//}
 ?>
