@@ -1,83 +1,67 @@
+<?php
+include_once 'staticHeaded.php';
+?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Some New Page Rechanged</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="./css/welcomePage.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    </head>
-    <body>
-        <div class="second">
-        <div class="header"><b>amazon</b><span style="font-size: 50%;padding-top: 15px;padding-bottom: 10px; ">.in</span>
-            <button style="margin-left: 10%; width: 50px; height: 10%; margin-top: 8px; padding: 5px">All <i class="fa fa-caret-down" aria-hidden="true"></i></button>
-            <input type="text" style="width: 40%; height:10%; margin-top: 8px; padding: 5px" placeholder="Search"> 
-            <button style="background-color:darkorange; width:50px ;border: none; height: 10%; margin-top: 8px; padding: 5px; font-size: 0.6em;" class="fa fa-search"></button>
-        </div>
-        <div class="header">
-            <div class="dropdown">
-            <button style="background-color:transparent; border: none; margin-left: 10px; height: 10%; margin-top: 8px; padding: 5px; text-align: left; color: white">Shop By <br><b>Categories</b> <i class="fa fa-caret-down" style="color: white;"></i></button>
-            <div class="dropdown-content">
-            </div>
-            </div>
-            
-            <button style="background-color:transparent; border: none; margin-left: 11%; height: 10%; margin-top: 21px; padding: 2px; color:white">Your Amazon.in</button>
-            <button style="background-color:transparent; border: none; margin-left: 10px; height: 10%; margin-top: 21px; padding: 2px; color:white">Today's Deals</button>
-            <button style="background-color:transparent; border: none; margin-left: 10px; height: 10%; margin-top: 21px; padding: 2px; color:white">Amazon pay</button>
-            <button style="background-color:transparent; border: none; margin-left: 10px; height: 10%; margin-top: 21px; padding: 2px; color:white">Sell</button>
-            <button style="background-color:transparent; border: none; margin-left: 10px; height: 10%; margin-top: 21px; padding: 2px; color:white">Customer Service</button>
-        
-            <?php
-            session_start();
-            echo $_SESSION['userEmail'];
-            if(isset($_SESSION['userName'])){    
-                echo '<button style="background-color:transparent; border: none; margin-left: 12%; height: 10%; margin-top: 8px; padding: 5px; text-align: left; color: white">Hello '. $_SESSION["userName"].'<br><b>Your Orders</b> <i class="fa fa-caret-down" style="color: white;"></i></button>';
-            }
-            else{
-                echo '<button style="background-color:transparent; border: none; margin-left: 12%; height: 10%; margin-top: 8px; padding: 5px; text-align: left; color: white">Hello<a href="login.php">Sign In</a><br><b>Your Orders</b> <i class="fa fa-caret-down" style="color: white;"></i></button>';
-            }
-            ?>
-            <button style="background-color:transparent; border: none; margin-left: 10px; height: 10%; margin-top: 8px; padding: 5px; text-align: left; color: white">Try<br><b>Prime</b> <i class="fa fa-caret-down" style="color: white;"></i></button>
-            <button style="background-color:transparent; border: none; margin-left: 10px; height: 10%; margin-top: 8px; padding: 5px; text-align: left; color: white">Your<br><b>Lists</b> <i class="fa fa-caret-down" style="color: white;"></i></button>
-            <button style="background-color:transparent; border: none; margin-left: 10px; height: 10%; margin-top: 8px; padding: 5px; text-align: left; color: white; font-size: 0.9em;"><i class="fa fa-shopping-cart" style="color: white;"></i><span style="font-size: 0.5em"><b>Cart</b></span></button>
-        </div>
-        
-            <div style="display: flex; flex-wrap: wrap;">
-            <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
-                <div style="padding:10%"> <b>APPLIANCES</b><br> </div>
-                <a href="appliances.php">Click Here<br></a>
-            </div>
-            <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
-                <div style="padding:10%"> <b>CLOTHING</b><br> </div>
-                <a href="clothing.php">Click Here<br></a>
-            </div>
-            <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
-                <div style="padding:10%"> <b>SHOES</b><br> </div>
-                <a href="shoes.php">Click Here<br></a>
-            </div>
-                <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
-                <div style="padding:10%"> <b>ACCESSORIES</b><br> </div>
-                <a href="accessories.php">Click Here<br></a>
-            </div>
-                <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
-                <div style="padding:10%"> <b>MOBILES</b><br> </div>
-                <a href="mobil.php">Click Here<br></a>
-            </div>
-                <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
-                <div style="padding:10%"> <b>HOUSEHOLD</b><br> </div>
-                <a href="household.php">Click Here<br></a>
-            </div>
-                <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
-                <div style="padding:10%"> <b>FURNITURE</b><br> </div>
-                <a href="furniture.php">Click Here<br></a>
-            </div> 
-                <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
-                <div style="padding:10%"> <b>COSMETICS</b><br> </div>
-                <a href="cosmetics.php">Click Here<br></a>
-            </div>
+    <div style="display: flex; flex-wrap: wrap;">
+    <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
+    <div style="padding:10%"> <b>APPLIANCES</b><br> </div>
+        <a href="appliances.php">Click Here<br></a>
+    </div>
+    <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
+    <div style="padding:10%"> <b>CLOTHING</b><br> </div>
+        <a href="clothing.php">Click Here<br></a>
+    </div>
+    <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
+    <div style="padding:10%"> <b>SHOES</b><br> </div>
+        <a href="shoes.php">Click Here<br></a>
+    </div>
+    <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
+    <div style="padding:10%"> <b>ACCESSORIES</b><br> </div>
+        <a href="accessories.php">Click Here<br></a>
+    </div>
+    <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
+    <div style="padding:10%"> <b>MOBILES</b><br> </div>
+        <a href="mobil.php">Click Here<br></a>
+    </div>
+    <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
+    <div style="padding:10%"> <b>HOUSEHOLD</b><br> </div>
+        <a href="household.php">Click Here<br></a>
+    </div>
+    <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
+    <div style="padding:10%"> <b>FURNITURE</b><br> </div>
+        <a href="furniture.php">Click Here<br></a>
+    </div> 
+    <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
+    <div style="padding:10%"> <b>COSMETICS</b><br> </div>
+        <a href="cosmetics.php">Click Here<br></a>
+    </div>
                 
         </div>
         </div>
+            <script>
+            var slideIndex = 1;
+            showSlides(slideIndex);
+
+            function plusSlides(n) {
+              showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+              showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+              var i;
+              var slides = document.getElementsByClassName("mySlides");
+              //var dots = document.getElementsByClassName("dot");
+              if (n > slides.length) {slideIndex = 1}    
+              if (n < 1) {slideIndex = slides.length}
+              for (i = 0; i < slides.length; i++) {
+                  slides[i].style.display = "none";  
+              }
+              slides[slideIndex-1].style.display = "block";  
+            }
+            </script>
     </body>
 </html>

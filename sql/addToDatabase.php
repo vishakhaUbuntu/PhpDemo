@@ -1,4 +1,5 @@
 <?php
+session_start();
 //include_once 'connection.php';
 require __DIR__ . '/../validations/phpValidations.php'; 
 /*------------------Get the value of all the variables of a form--------------------*/
@@ -26,13 +27,14 @@ if(checkForStrings($first_name) && checkForStrings($last_name) && checkForEmails
       $query = $GLOBALS['$con']->query("INSERT INTO first_table (full_name,email,password,salt) 
                 VALUES ('$full_name','$email','$finalMD5','$salt')");
       if($query){
-         $_SESSION['error'] = "1";  //Registered Successfully!
+         $_SESSION['error'] = 1;  //Registered Successfully!
          $_SESSION['loggedIn'] = true;
          $_SESSION['lastActivity'] = time();
+         $_SESSION['userName'] = $first_name;
          header('Location: /PhpDemo/error.php');
       }
       else {
-         $_SESSION['error'] = "2";//Unable to register
+         $_SESSION['error'] = 2;//Unable to register
          header('Location: /PhpDemo/error.php');
       }
 }

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$expireAfter = 60;
+$expireAfter = 6000;
 
 if (isset($_SESSION['lastActivity'])) {
     

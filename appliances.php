@@ -1,3 +1,8 @@
+<?php
+session_start();
+include_once 'staticHeaded.php';
+$_SESSION['url'] = "./appliances.php";
+?>
 <!DOCTYPE html>
 <html>
     <body>
@@ -7,6 +12,7 @@
         echo $_SESSION['loggedIn'];
         if(!isset($_SESSION['loggedIn'])){
             echo $_SESSION['loggedIn'];
+            $_SESSION['error'] = 5;
             header('Location: ./login.php');
         }
         ?>

@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <?php
 session_start();
 $_SESSION['error'] = 0;
@@ -36,7 +36,7 @@ $_SESSION['error'] = 0;
 
     <div id="formDiv">
         <!--Form for registration-->
-        <form id="register" action='index.php' method="post">
+        <form id="register" action='' method="post">
             <i class="fa fa-user-o" style="color: turquoise" aria-hidden="true"><input type="text" name="fname" id="fname" placeholder="First Name" required></i><br>
             <i class="fa fa-user-o" style="color: turquoise" aria-hidden="true"><input type="text" name="lname" id="lname" placeholder="Last Name" required></i><br>
             <i class="fa fa-envelope" style="color: turquoise" aria-hidden="true"><input type="text" name="email" id="email" placeholder="Email" required></i><br>

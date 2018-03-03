@@ -33,10 +33,18 @@
                 $_SESSION['userPassword'] = $password;
             }
             $_SESSION['userName'] = explode(" ", $userDetails['full_name'])[0];
-            $_SESSION['error'] = 3;//Login Successful
-            $_SESSION['loggedIn'] = true;
-            $_SESSION['lastActivity'] = time();
-            header('location: /PhpDemo/error.php');
+            if(isset($_SESSION['url']))
+            {
+               header("Location:".$_SESSION['url'], TRUE);
+               $_SESSION['loggedIn'] = true;
+               $_SESSION['lastActivity'] = time();
+            }
+            else {
+               $_SESSION['error'] = 3;//Login Successful
+               $_SESSION['loggedIn'] = true;
+               $_SESSION['lastActivity'] = time();
+               header('location: /PhpDemo/error.php');
+            }
         }
         else {
             $_SESSION['error'] = 4;//Typed password does not match
