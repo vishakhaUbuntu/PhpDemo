@@ -5,7 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-function checkForStrings($str){
+function checkForStrings($str){ 
     if(!empty($str))
     {
         $result = rtrim($str);//

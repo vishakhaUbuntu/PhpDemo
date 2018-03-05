@@ -36,7 +36,7 @@ include_once 'staticHeaded.php';
     <div style="padding:10%"> <b>COSMETICS</b><br> </div>
         <a href="cosmetics.php">Click Here<br></a>
     </div>
-                
+                 
         </div>
         </div>
             <script>

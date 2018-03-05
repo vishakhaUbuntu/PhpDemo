@@ -17,4 +17,4 @@ $_SESSION['url'] = "./accessories.php";
         }
         ?>
     </body>
-</html>
+</html> 

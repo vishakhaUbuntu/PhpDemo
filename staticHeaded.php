@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Some New Page Rechanged</title>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8"> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="./css/welcomePage.css">
@@ -21,7 +21,7 @@
             <button style="background-color:transparent; border: none; margin-left: 10px; height: 10%; margin-top: 8px; padding: 5px; text-align: left; color: white">Shop By <br><b>Categories</b> <i class="fa fa-caret-down" style="color: white;"></i></button>
             <div class="dropdown-content">
             </div>
-            </div>
+            </div> 
             
             <button style="background-color:transparent; border: none; margin-left: 11%; height: 10%; margin-top: 21px; padding: 2px; color:white">Your Amazon.in</button>
             <button style="background-color:transparent; border: none; margin-left: 10px; height: 10%; margin-top: 21px; padding: 2px; color:white">Today's Deals</button>

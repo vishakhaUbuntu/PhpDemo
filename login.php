@@ -23,7 +23,7 @@ $_SESSION['error'] = 0;
                 require './sql/getFromDatabase.php';
             }
 
-            if(isset($_POST['Register'])){
+            if(isset($_POST['Register'])){ 
                 require './sql/addToDatabase.php';
             }      
         }

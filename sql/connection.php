@@ -2,7 +2,7 @@
 //Connection Settings
     $host = 'localhost';
     $user = 'root';
-    $pass = '123456';
+    $pass = '123456'; 
     $db = 'test';
     $GLOBALS['$con'] = new mysqli($host, $user, $pass, $db) OR die($con->error);
 

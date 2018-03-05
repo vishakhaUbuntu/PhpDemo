@@ -1,7 +1,7 @@
 <?php
 session_start();
 //include_once 'connection.php';
-require __DIR__ . '/../validations/phpValidations.php'; 
+require __DIR__ . '/../validations/phpValidations.php';  
 /*------------------Get the value of all the variables of a form--------------------*/
 $first_name = filter_input(INPUT_POST, 'fname');
 $last_name = filter_input(INPUT_POST, 'lname');

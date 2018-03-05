@@ -3,7 +3,7 @@ session_start();
 include_once 'staticHeaded.php';
 $_SESSION['url'] = "./furniture.php";
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
     <body>
         <h1>Furniture page called</h1>
@@ -16,5 +16,5 @@ $_SESSION['url'] = "./furniture.php";
             header('Location: ./login.php');
         }
         ?>
-    </body>
+    </body> 
 </html>

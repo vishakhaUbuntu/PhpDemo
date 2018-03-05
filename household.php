@@ -2,8 +2,8 @@
 session_start();
 include_once 'staticHeaded.php';
 //$_SESSION['url'] = "./household.php";
-$_SESSION['url'] = $_SERVER["REQUEST_URI"];
-echo substr($_SESSION['url'],8);
+$_SESSION['url'] = $_SERVER["PHP_SELF"];
+echo $_SESSION['url'];
 $val_test = $_GET['test'];
 ?>
 <!DOCTYPE html>
@@ -20,5 +20,5 @@ $val_test = $_GET['test'];
             header('Location: ./login.php');
         }
         ?>
-    </body>
+    </body> 
 </html>

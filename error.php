@@ -21,7 +21,7 @@
                         $_SESSION['error'] = 6;
                         echo '<a href="login.php">Try Again</a>';
                         break;
-                    }
+                    } 
                     case 3:{
                         echo '<h1 style="">Success!!</h1>';
                         echo "Login Successful!";

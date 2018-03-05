@@ -16,5 +16,5 @@ $_SESSION['url'] = "./mobil.php";
             header('Location: ./login.php');
         }
         ?>
-    </body>
+    </body> 
 </html>

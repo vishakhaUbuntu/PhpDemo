@@ -1,6 +1,6 @@
 <?php 
 //if(isset($_POST['emailLogin']))
-//{
+//{ 
     include_once 'connection.php';
     session_start();
     /*------------------Get the value of all the variables of a form--------------------*/

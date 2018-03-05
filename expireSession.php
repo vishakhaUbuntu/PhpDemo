@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$expireAfter = 6000;
+$expireAfter = 60;
 
 if (isset($_SESSION['lastActivity'])) {
     
@@ -12,6 +12,6 @@ if (isset($_SESSION['lastActivity'])) {
     session_unset($_SESSION['userName']);
     $_SESSION['lastActivity'] = time(); // update last activity time stamp
 }
-}
+} 
 ?>
 
