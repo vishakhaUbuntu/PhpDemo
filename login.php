@@ -8,12 +8,12 @@ $_SESSION['error'] = 0;
 <title>Shopping</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 <link rel="stylesheet" type="text/css" href="./css/login.css">
-<link href="https://bootswatch.com/4/sketchy/bootstrap.min.css" rel="stylesheet" type="text/css">
+<!--<link href="https://bootswatch.com/4/sketchy/bootstrap.min.css" rel="stylesheet" type="text/css">-->
 </head>
 
-<body>
+<body onload="document.getElementById('id01').style.display='block'">
     <?php
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
@@ -23,20 +23,20 @@ $_SESSION['error'] = 0;
                 require './sql/getFromDatabase.php';
             }
 
-            if(isset($_POST['Register'])){ 
+            if(isset($_POST['Register'])){
                 require './sql/addToDatabase.php';
             }      
         }
     ?>
-    <div class="loginDiv">
+<!--    <div class="loginDiv">
         <div id="buttonDiv">  
         <button id="buttonRegister" onclick="hideLogin();">Register</button>
         <button id="buttonLogin" onclick="hideRegister();">Login</button>
     </div>
 
     <div id="formDiv">
-        <!--Form for registration-->
-        <form id="register" action='' method="post">
+        Form for registration
+        <form id="register" action='index.php' method="post">
             <i class="fa fa-user-o" style="color: turquoise" aria-hidden="true"><input type="text" name="fname" id="fname" placeholder="First Name" required></i><br>
             <i class="fa fa-user-o" style="color: turquoise" aria-hidden="true"><input type="text" name="lname" id="lname" placeholder="Last Name" required></i><br>
             <i class="fa fa-envelope" style="color: turquoise" aria-hidden="true"><input type="text" name="email" id="email" placeholder="Email" required></i><br>
@@ -44,7 +44,7 @@ $_SESSION['error'] = 0;
             <br><input class="submit" type="submit" style="background-color: turquoise;height: 35px;" value="Submit" name="Register" onclick="return Validate()"/>
         </form>
 
-        <!--Form for login-->
+        Form for login
         <form name="login" id="login" action='' method="post">
             <i class="fa fa-envelope" style="color: turquoise" aria-hidden="true"><input type="text" name="emailLogin" id="emailLogin" placeholder="Email" required></i><br>
             <i class="fa fa-key" style="color: turquoise" aria-hidden="true"><input type="password" name="passwdLogin" id="passwdLogin" placeholder="Password" required></i><br>
@@ -52,7 +52,40 @@ $_SESSION['error'] = 0;
             <br><input class="submit" type="submit" style="background-color: turquoise;height: 35px;" value="Submit" name="Login" onclick="return loginValidate()"/>
         </form>
     </div>
+</div>-->
+<!-- Button to open the modal login form -->
+<!--<button onclick="document.getElementById('id01').style.display='block'">Login</button>-->
+
+<!-- The Modal -->
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" 
+class="close" title="Close Modal">&times;</span>
+
+  <!-- Modal Content -->
+  <form class="modal-content animate" action="" method="post">
+<!--    <div class="imgcontainer">
+      <img src="/home/vishakha/Downloads/avatar.png" alt="Avatar" class="avatar">
+    </div>-->
+    <div class="container">
+      <label for="email"><b>Email Id</b></label>
+      <input type="text" placeholder="Enter Email Id" name="emailLogin" id="emailLogin" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="passwdLogin" id="passwdLogin" required>
+
+      <button type="submit" value="Submit" name="Login" onclick="return loginValidate()">Login</button>
+      <label>
+        <input type="checkbox" name="remember" value="remember">Remember Me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
 </div>
+
    
 <script>
     
@@ -132,6 +165,7 @@ $_SESSION['error'] = 0;
         if($_SESSION['userEmail'] && ($_SESSION['error'] == 0)){
             echo "<script type='text/javascript'>
                 hideRegister();
+                populateFields();
         </script>";
         }
         ?>
