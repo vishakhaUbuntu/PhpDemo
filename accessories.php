@@ -11,8 +11,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET')
         <link rel="stylesheet" type="text/css" href="./css/itemCards.css">
     </head>
     <body>
-        <h1>Accessories page called</h1>
-        
+        <h1>Accessories page called</h1> 
         <?php
         $con = mysql_connect("localhost", "root", "123456");
         mysql_select_db("test", $con);
@@ -31,7 +30,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET')
                   <button type="submit" id="Add">Add</button>
                   </div>
                  </div>
-                </form>';
+                 </form>';
         }
         ?>
             
