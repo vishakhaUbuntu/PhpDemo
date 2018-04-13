@@ -9,6 +9,18 @@ include_once './staticHeaded.php';
     <body>
         <h1>Mobile page called</h1>
         
+        <script>
+        function loadDoc()
+        {
+            <?php  
+            if(isset($_GET['Add'])){
+            session_start();
+            $_SESSION['count'] = $_SESSION['count'] + 1; 
+            echo 'document.getElementById("cartCount").innerHTML = '.$_SESSION['count']. ';';
+            }
+            ?>
+        }
+        </script>
         <?php
         $con =mysql_connect("localhost", "root", "123456");
         mysql_select_db("test", $con);
@@ -23,7 +35,7 @@ include_once './staticHeaded.php';
             <h4><b>'.$row[item_name].'</b></h4>
         <p>'.$row[price].'</p> 
             <input type="number" name="qty" pattern="/^(0|[1-9]\d*)$/"></input>
-            <button type="submit" id="Add">Add</button>
+            <button type="submit" id="Add" name="Add" onclick="loadDoc()">Add</button>
         </div>
         </div>
         </form>';

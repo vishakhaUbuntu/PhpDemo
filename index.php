@@ -7,12 +7,12 @@ include_once 'staticHeaded.php';
 <!--    <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
     <div style="padding:10%"> <b>APPLIANCES</b><br> </div>
         <a href="appliances.php">Click Here<br></a>
-    </div>-->
-<!--    <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
+    </div>
+    <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
     <div style="padding:10%"> <b>CLOTHING</b><br> </div>
         <a href="clothing.php">Click Here<br></a>
-    </div>-->
-<!--    <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
+    </div>
+    <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
     <div style="padding:10%"> <b>SHOES</b><br> </div>
         <a href="shoes.php">Click Here<br></a>
     </div>-->
@@ -27,12 +27,12 @@ include_once 'staticHeaded.php';
 <!--    <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
     <div style="padding:10%"> <b>HOUSEHOLD</b><br> </div>
         <a href="household.php">Click Here<br></a>
-    </div>-->
-<!--    <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
+    </div>
+    <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
     <div style="padding:10%"> <b>FURNITURE</b><br> </div>
         <a href="furniture.php">Click Here<br></a>
-    </div> -->
-<!--    <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
+    </div>
+<    <div style="width: 20%; background-color: #f6eaea; text-align: center;padding-bottom: 10px; margin: 5px">
     <div style="padding:10%"> <b>COSMETICS</b><br> </div>
         <a href="cosmetics.php">Click Here<br></a>
     </div>-->

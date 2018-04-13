@@ -10,7 +10,7 @@ $_SESSION['url'] = "./furniture.php";
         function loadDoc()
         {
             <?php  
-            if($_GET["Add"]){
+            if(isset($_GET['Add'])){
             session_start();
             $_SESSION['count'] = $_SESSION['count'] + 1; 
             echo 'document.getElementById("cartCount").innerHTML = '.$_SESSION['count']. ';';

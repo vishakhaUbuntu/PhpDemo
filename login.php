@@ -63,9 +63,8 @@ class="close" title="Close Modal">&times;</span>
 
   <!-- Modal Content -->
   <form class="modal-content animate" action="" method="post">
-<!--    <div class="imgcontainer">
-      <img src="/home/vishakha/Downloads/avatar.png" alt="Avatar" class="avatar">
-    </div>-->
+
+  <label style="display: block; text-align: center; font-size: 2em"><b>Login</b></label>
     <div class="container">
       <label for="email"><b>Email Id</b></label>
       <input type="text" placeholder="Enter Email Id" name="emailLogin" id="emailLogin" required>
@@ -80,8 +79,8 @@ class="close" title="Close Modal">&times;</span>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
+      <button type="button" onclick="location.href='index.php';" class="cancelbtn">Cancel</button>
+      <span class="psw"><a href="register.php">Register</a></span>
     </div>
   </form>
 </div>

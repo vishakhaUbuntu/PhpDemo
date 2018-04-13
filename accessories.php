@@ -1,9 +1,5 @@
 <?php
 include_once './staticHeaded.php';
-if($_SERVER['REQUEST_METHOD'] == 'GET')
-{
-    
-}
 ?> 
 <!DOCTYPE html>
 <html> 
@@ -11,6 +7,18 @@ if($_SERVER['REQUEST_METHOD'] == 'GET')
         <link rel="stylesheet" type="text/css" href="./css/itemCards.css">
     </head>
     <body>
+        <script>
+        function loadDoc()
+        {
+            <?php  
+            if(isset($_GET['Add'])){
+            session_start();
+            $_SESSION['count'] = $_SESSION['count'] + 1; 
+            echo 'document.getElementById("cartCount").innerHTML = '.$_SESSION['count']. ';';
+            }
+            ?>
+        }
+        </script>
         <h1>Accessories page called</h1> 
         <?php
         $con = mysql_connect("localhost", "root", "123456");
@@ -27,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET')
                   <h4><b>'.$row[item_name].'</b></h4>
                   <p>'.$row[price].'</p> 
                   <input type="number" name="qty" pattern="/^(0|[1-9]\d*)$/"></input>
-                  <button type="submit" id="Add">Add</button>
+                  <button type="submit" id="Add" name="Add" onclick="loadDoc()">Add</button>
                   </div>
                  </div>
                  </form>';
