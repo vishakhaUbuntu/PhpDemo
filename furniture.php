@@ -12,6 +12,7 @@ $_SESSION['url'] = "./furniture.php";
             <?php  
             if(isset($_GET['Add'])){
             session_start();
+            
             $_SESSION['count'] = $_SESSION['count'] + 1; 
             echo 'document.getElementById("cartCount").innerHTML = '.$_SESSION['count']. ';';
             }
