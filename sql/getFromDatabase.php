@@ -1,6 +1,4 @@
 <?php 
-//if(isset($_POST['emailLogin']))
-//{ 
     include_once 'connection.php';
     session_start();
     /*------------------Get the value of all the variables of a form--------------------*/
@@ -18,8 +16,8 @@
     
     /*-----------------------Check if email id exists or not----------------------------*/
     if($userDetails == null){
-        $_SESSION['error'] = 4; 
-        header('location: /PhpDemo/error.php');
+//        $_SESSION['error'] = 4; 
+//        header('location: /PhpDemo/error.php');
     }
     else
     {
@@ -40,15 +38,15 @@
                $_SESSION['lastActivity'] = time();
             }
             else {
-               $_SESSION['error'] = 3;//Login Successful
+//               $_SESSION['error'] = 3;//Login Successful
                $_SESSION['loggedIn'] = true;
                $_SESSION['lastActivity'] = time();
-               header('location: /PhpDemo/error.php');
+//               header('location: /PhpDemo/error.php');
             }
         }
         else {
-            $_SESSION['error'] = 4;//Typed password does not match
-            header('location: /PhpDemo/error.php');
+//            $_SESSION['error'] = 4;//Typed password does not match
+//            header('location: /PhpDemo/error.php');
         }
     }
 //}
