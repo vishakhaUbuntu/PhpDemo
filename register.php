@@ -38,7 +38,7 @@ $_SESSION['error'] = 0;
           <label style="display: block; text-align: center; font-size: 2em"><b>Login</b></label>
             <div class="container">
               <label for="email"><b>Email Id</b></label>
-              <input type="text" placeholder="Enter Email Id" name="emailLogin" id="emailLogin" required>
+              <input type="text" placeholder="Enter Email Id" name="emailLogin" id="emailLogin" onfocus ="resetForm(this.id)" required>
 
               <label for="psw"><b>Password</b></label>
               <input type="password" placeholder="Enter Password" name="passwdLogin" id="passwdLogin" required>
@@ -50,7 +50,7 @@ $_SESSION['error'] = 0;
             </div>
 
             <div class="container" style="background-color:#f1f1f1">
-              <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+              <button type="button" id="cancelLogin" onclick="resetForm(this.id)" class="cancelbtn">Cancel</button>
               <span class="psw"><a onclick="hideLogin()">Register</a></span>
             </div>
           </form>
@@ -72,17 +72,17 @@ class="close" title="Close Modal">&times;</span>
       <input type="text" placeholder="Enter Last Name" name="lname" id="lname" required>
 
       <label for="email"><b>Email Id</b></label>
-      <input type="text" placeholder="Enter Email Id" name="email" id="email" required>
+      <input type="text" placeholder="Enter Email Id" name="email" id="emailRegister" required>
       
       <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="passwd" id="passwd" required>
+      <input type="password" placeholder="Enter Password" name="passwd" id="passwdRegister" required>
 
       <button type="submit" value="Submit" name="Register" onclick="return Validate()">Register</button>
       
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="button" id="cancelRegister" onclick="resetForm(this.id)" class="cancelbtn">Cancel</button>
       <span class="psw"><a onclick="hideRegister()">Login</a></span>
     </div>
   </form>
@@ -90,6 +90,14 @@ class="close" title="Close Modal">&times;</span>
 
    
 <script>  
+    function resetForm(id){
+        document.getElementById(id).form.reset();
+//        if(id == 'cancelLogin')
+//            document.getElementById("id01").style.display="none";
+//        else
+//            document.getElementById("id02").style.display="none";
+    }
+    
     function hideRegister()
         {
             document.getElementById("id02").style.display="none";
@@ -118,12 +126,12 @@ class="close" title="Close Modal">&times;</span>
                     alert ("Invalid name format");
                     return false;
                 }
-            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.getElementById("email").value) === false)
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.getElementById("emailRegister").value) === false)
                 {  
                     alert("You have entered an invalid email address!")  
                     return false;
                 }  
-            if (!(password.test(document.getElementById("passwd").value)))  
+            if (!(password.test(document.getElementById("passwdRegister").value)))  
                 {  
                     alert("You have entered an invalid password!");  
                     return false;
@@ -143,7 +151,7 @@ class="close" title="Close Modal">&times;</span>
                         alert("You have entered an invalid password!");  
                         return false;
                     } 
-            } 
+            }           
 </script>
 </body>
 </html>

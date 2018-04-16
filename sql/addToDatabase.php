@@ -5,8 +5,8 @@ require __DIR__ . '/../validations/phpValidations.php';
 /*------------------Get the value of all the variables of a form--------------------*/
 $first_name = filter_input(INPUT_POST, 'fname');
 $last_name = filter_input(INPUT_POST, 'lname');
-$email = filter_input(INPUT_POST, 'email');
-$password = filter_input(INPUT_POST, 'passwd');
+$email = filter_input(INPUT_POST, 'emailRegister');
+$password = filter_input(INPUT_POST, 'passwdRegister');
 
 /*------------------Check for the validity of all the variables---------------------*/
 if(checkForStrings($first_name) && checkForStrings($last_name) && checkForEmails($email) && !empty($password))
