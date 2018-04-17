@@ -33,7 +33,7 @@ $_SESSION['error'] = 0;
         class="close" title="Close Modal">&times;</span>
 
           <!-- Modal Content -->
-          <form class="modal-content animate" action="" method="post">
+          <form id="form1" class="modal-content animate" action="" method="post" onload="document.getElementById('form1').reset()">
 
           <label style="display: block; text-align: center; font-size: 2em"><b>Login</b></label>
             <div class="container">
