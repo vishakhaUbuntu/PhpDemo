@@ -16,8 +16,7 @@ $_SESSION['error'] = 0;
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
             require './sql/connection.php';
-            if(isset($_POST['Login']))
-            {
+            if(isset($_POST['Login'])){
                 require './sql/getFromDatabase.php';
             }
 
@@ -30,15 +29,15 @@ $_SESSION['error'] = 0;
     <!-- The Modal for Login-->
         <div id="id01" class="modal">
           <span onclick="document.getElementById('id01').style.display='none'" 
-        class="close" title="Close Modal">&times;</span>
+          class="close" title="Close Modal">&times;</span>
 
           <!-- Modal Content -->
-          <form id="form1" class="modal-content animate" action="" method="post" onload="document.getElementById('form1').reset()">
-
+          <form id="loginForm" class="modal-content animate" action="" method="post" onkeyup="resetForm(this.id)">
           <label style="display: block; text-align: center; font-size: 2em"><b>Login</b></label>
+          <div style="color: red; text-align: center; padding: 3px" id="errorLogin"></div>
             <div class="container">
               <label for="email"><b>Email Id</b></label>
-              <input type="text" placeholder="Enter Email Id" name="emailLogin" id="emailLogin" onfocus ="resetForm(this.id)" required>
+              <input type="text" placeholder="Enter Email Id" name="emailLogin" id="emailLogin" required>
 
               <label for="psw"><b>Password</b></label>
               <input type="password" placeholder="Enter Password" name="passwdLogin" id="passwdLogin" required>
@@ -50,7 +49,7 @@ $_SESSION['error'] = 0;
             </div>
 
             <div class="container" style="background-color:#f1f1f1">
-              <button type="button" id="cancelLogin" onclick="resetForm(this.id)" class="cancelbtn">Cancel</button>
+              <button type="button" id="cancelLogin" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
               <span class="psw"><a onclick="hideLogin()">Register</a></span>
             </div>
           </form>
@@ -62,8 +61,9 @@ $_SESSION['error'] = 0;
 class="close" title="Close Modal">&times;</span>
 
   <!-- Modal Content -->
-  <form class="modal-content animate" action="" method="post">
-<label style="display: block; text-align: center; font-size: 2em"><b>Register</b></label>
+  <form id="registerForm" class="modal-content animate" action="" method="post" onkeyup="resetForm(this.id)">
+    <label style="display: block; text-align: center; font-size: 2em"><b>Register</b></label>
+    <div style="color: red; text-align: center; padding: 3px" id="errorRegister"></div>    
     <div class="container">
       <label for="firstname"><b>First Name</b></label>
       <input type="text" placeholder="Enter First Name" name="fname" id="fname" required>
@@ -82,76 +82,79 @@ class="close" title="Close Modal">&times;</span>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-        <button type="button" id="cancelRegister" onclick="resetForm(this.id)" class="cancelbtn">Cancel</button>
-      <span class="psw"><a onclick="hideRegister()">Login</a></span>
+        <button type="button" id="cancelRegister" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+    <span class="psw"><a onclick="hideRegister()">Login</a></span>
     </div>
   </form>
 </div>
 
    
 <script>  
-    function resetForm(id){
-        document.getElementById(id).form.reset();
-//        if(id == 'cancelLogin')
-//            document.getElementById("id01").style.display="none";
-//        else
-//            document.getElementById("id02").style.display="none";
+    function resetForm(formId){
+        document.getElementById(formId).reset();
     }
     
-    function hideRegister()
-        {
-            document.getElementById("id02").style.display="none";
-            document.getElementById("id01").style.display="block";
-        }
+    function hideRegister(){
+        document.getElementById("id02").style.display="none";
+        document.getElementById("id01").style.display="block";
+    }
         
-    function hideLogin()
-        {
-            document.getElementById("id02").style.display="block";
-            document.getElementById("id01").style.display="none";
-        }
+    function hideLogin(){
+        document.getElementById("id02").style.display="block";
+        document.getElementById("id01").style.display="none";
+    }
         
-    function Validate()
+    function Validate(){
+        var letters = "[a-zA-Z][a-zA-Z\s]*";
+        var password = "[a-zA-Z0-9][^\w\s]*";
+        var firstName = document.getElementById("fname").value;
+        var lastName = document.getElementById("lname").value;
+        if(firstName === "" || lastName === "")
         {
-            var letters = "[a-zA-Z][a-zA-Z\s]*";
-            var password = "[a-zA-Z0-9][^\w\s]*";
-            var firstName = document.getElementById("fname").value;
-            var lastName = document.getElementById("lname").value;
-            if(firstName === "" || lastName === "")
-                {
-                    alert ("First name or Last name fields cannot be blank");
-                    return false;
-                }
-            if(!(/^[a-zA-Z]*$/g.test(firstName)) || !(/^[a-zA-Z]*$/g.test(lastName)))
-                {
-                    alert ("Invalid name format");
-                    return false;
-                }
-            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.getElementById("emailRegister").value) === false)
-                {  
-                    alert("You have entered an invalid email address!")  
-                    return false;
-                }  
-            if (!(password.test(document.getElementById("passwdRegister").value)))  
-                {  
-                    alert("You have entered an invalid password!");  
-                    return false;
-                }    
-            }
+            document.getElementById('errorRegister').innerHTML = "First name or Last name fields cannot be blank";
+            return false;
+        }
+        if(!(/^[a-zA-Z]*$/g.test(firstName)) || !(/^[a-zA-Z]*$/g.test(lastName)))
+        {
+            document.getElementById('errorRegister').innerHTML = "Invalid name format";
+            return false;
+        }
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.getElementById("emailRegister").value) === false)
+        {  
+            document.getElementById('errorRegister').innerHTML = "You have entered an invalid email address!";
+            return false;
+        }  
+        if (!(password.test(document.getElementById("passwdRegister").value)))  
+        {  
+            document.getElementById('errorRegister').innerHTML = "You have entered an invalid password!";
+            return false;
+        }    
+    }
            
-           function loginValidate()
-            {
-                var password = "[a-zA-Z0-9][^\w\s]*";
-                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.getElementById("emailLogin").value) === false)
-                    {  
-                        alert("You have entered an invalid email address!")  
-                        return false;
-                    }
-                if (!(password.test(document.getElementById("passwdLogin").value)))  
-                    {  
-                        alert("You have entered an invalid password!");  
-                        return false;
-                    } 
-            }           
+    function loginValidate()
+    {
+        var password = "[a-zA-Z0-9][^\w\s]*";
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.getElementById("emailLogin").value) === false)
+        {  
+            document.getElementById('errorLogin').innerHTML = "You have entered an invalid email address!"; 
+            return false;
+        }
+        if (!(password.test(document.getElementById("passwdLogin").value)))  
+        {  
+            document.getElementById('errorLogin').innerHTML = "You have entered an invalid password!"; 
+            return false;
+        } 
+                    
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtHint").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("POST", "getFromDatabase.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("errorLogin=vishakha@ayoga.in&passwdLogin=123456");
+    }           
 </script>
 </body>
 </html>
