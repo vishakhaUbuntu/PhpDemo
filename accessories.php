@@ -34,21 +34,12 @@ include_once './staticHeaded.php';
                   <div class="container">
                   <h4><b>'.$row[item_name].'</b></h4>
                   <p>'.$row[price].'</p> 
-                  <input type="number" name="qty" pattern="/^(0|[1-9]\d*)$/"></input>
+                  <input type="number" name="qty" min="1" value="1" pattern="/^([1-9]\d*)$/"></input>
                   <button type="submit" id="Add" name="Add" onclick="loadDoc()">Add</button>
                   </div>
                  </div>
                  </form>';
         }
-        ?>
-            
-        <!--<div class="card">
-            <img src="./imageRefs/accessories/accessory2.jpg" alt="Avatar" style="width:100%">
-            <div class="container">
-            <h4><b>Accessory 2</b></h4> 
-            <p>$300</p> 
-            <button id="Add">Add</button>
-        </div>
-        </div>-->            
+        ?>           
     </body>
 </html>

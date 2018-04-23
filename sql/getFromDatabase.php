@@ -38,6 +38,7 @@
                $_SESSION['lastActivity'] = time();
             }
             else {
+                echo 'Login Successful';
 //               $_SESSION['error'] = 3;//Login Successful
                $_SESSION['loggedIn'] = true;
                $_SESSION['lastActivity'] = time();
@@ -45,6 +46,7 @@
             }
         }
         else {
+            echo 'something';
 //            $_SESSION['error'] = 4;//Typed password does not match
 //            header('location: /PhpDemo/error.php');
         }

@@ -32,7 +32,7 @@ $_SESSION['error'] = 0;
           class="close" title="Close Modal">&times;</span>
 
           <!-- Modal Content -->
-          <form id="loginForm" class="modal-content animate" action="" method="post" onkeyup="resetForm(this.id)">
+          <form id="loginForm" class="modal-content animate" action="" method="post" onload="resetForm(this.id)">
           <label style="display: block; text-align: center; font-size: 2em"><b>Login</b></label>
           <div style="color: red; text-align: center; padding: 3px" id="errorLogin"></div>
             <div class="container">
@@ -148,12 +148,13 @@ class="close" title="Close Modal">&times;</span>
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("txtHint").innerHTML = this.responseText;
+//                document.getElementById('errorLogin').innerHTML = this.responseText;
+                alert('Called Ajax');
                 }
             };
             xmlhttp.open("POST", "getFromDatabase.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("errorLogin=vishakha@ayoga.in&passwdLogin=123456");
+            xhttp.send("emailLogin=vishakha@ayoga.in&passwdLogin=123456");
     }           
 </script>
 </body>
