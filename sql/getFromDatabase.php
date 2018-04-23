@@ -30,6 +30,7 @@
                 $_SESSION['userEmail']    = $email;
                 $_SESSION['userPassword'] = $password;
             }
+            $_SESSION['userId'] = $userDetails['id'];
             $_SESSION['userName'] = explode(" ", $userDetails['full_name'])[0];
             if(isset($_SESSION['url']))
             {
