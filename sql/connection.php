@@ -11,9 +11,5 @@
       {
         echo "Failed to connect to MySQL: " . $con->error;
       }
-    else
-      {
-        echo "Connected<br>";
-      }
 ?>
 

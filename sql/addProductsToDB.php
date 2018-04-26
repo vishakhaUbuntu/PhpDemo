@@ -1,57 +1,51 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 include_once './connection.php';
-
+echo 'add products to db page called';
 $userId = 1;
 $status = 0;
-$productId = 2;
-$quantity = 5;
-$query = $GLOBALS['$con']->query("SELECT * FROM ORDERS WHERE userId = $userId AND status = $status") or die($con->error);
+$productId = 3;
+$quantity = 1;
+$query = $GLOBALS['$con']->query("SELECT orderID FROM ORDERS WHERE userId = $userId AND status = $status") or die($con->error);
 $orderExist = $query->fetch_assoc();
+echo $orderExist;
 
-if($orderExist->num_rows == 0)
+if($orderExist == null)
 {
     $query = $GLOBALS['$con']->query("INSERT INTO ORDERS (userID,status) 
                 VALUES ('$userId','$status')");
       if($query){
           $query = $GLOBALS['$con']->query("SELECT orderID FROM ORDERS WHERE userId = $userId AND status = 0") or die($con->error);
           $orderExist = $query->fetch_assoc();
-          $orderId = $orderExist['id'];
+          $orderId = $orderExist['orderID'];
           
           //Insert product details in order_details table using order id generated
-          $query = $GLOBALS['$con']->query("INSERT INTO ORDER_DETAILS (orderID,productID, quantity) 
+          $query = $GLOBALS['$con']->query("INSERT INTO ORDERS_DETAILS (orderID,productID, quantity) 
                 VALUES ('$orderId','$productId', '$quantity')");
       }
 }
 else
 {
-    $orderId = $orderExist['id'];
+    $orderId = $orderExist['orderID'];
     
-    $query = $GLOBALS['$con']->query("SELECT quantity FROM ORDERS_DETAILS WHERE productID = $userId AND orderID = $orderId") or die($con->error);
+    $query = $GLOBALS['$con']->query("SELECT * FROM ORDERS_DETAILS WHERE productID = $productId AND orderID = $orderId") or die($con->error);
     $productExist = $query->fetch_assoc();
     
-    if($productExist->num_rows == 0){
+    if($productExist == null){
     //Insert product details in order_details table using order id generated
-    $query = $GLOBALS['$con']->query("INSERT INTO ORDER_DETAILS (orderID,productID, quantity) 
+    $query = $GLOBALS['$con']->query("INSERT INTO ORDERS_DETAILS (orderID,productID, quantity) 
                 VALUES ('$orderId','$productId', '$quantity')");
     }
     else{
         if($quantity == 0)
         {
-            $query = $GLOBALS['$con']->query("DELETE FROM ORDER_DETAILS 
-                WHERE orderID = $orderID AND productID = $productId");
+            $query = $GLOBALS['$con']->query("DELETE FROM ORDERS_DETAILS 
+                WHERE orderID = $orderId AND productID = $productId") or die($GLOBALS['$con']->error);
         }
         else{
-        $query = $GLOBALS['$con']->query("UPDATE ORDER_DETAILS SET quantity = $quantity 
-                WHERE orderID = $orderID AND productID = $productId");
+        $query = $GLOBALS['$con']->query("UPDATE ORDERS_DETAILS SET quantity = $quantity
+                WHERE orderID = $orderId AND productID = $productId") or die($GLOBALS['$con']->error);
         }
     }
 }
-
 ?>
 

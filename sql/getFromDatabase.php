@@ -34,6 +34,7 @@
             }
             $_SESSION['userId'] = $userDetails['id'];
             $_SESSION['userName'] = explode(" ", $userDetails['full_name'])[0];
+            $_SESSION['userID'] = $userDetails['id'];
             if(isset($_SESSION['url']))
             {
                header("Location:".$_SESSION['url'], TRUE);
@@ -41,6 +42,7 @@
                $_SESSION['lastActivity'] = time();
             }
             else {
+                echo 'Login Successful';
 //               $_SESSION['error'] = 3;//Login Successful
                $_SESSION['loggedIn'] = true;
                $_SESSION['lastActivity'] = time();
@@ -48,6 +50,7 @@
             }
         }
         else {
+            echo 'something';
 //            $_SESSION['error'] = 4;//Typed password does not match
 //            header('location: /PhpDemo/error.php');
         }
