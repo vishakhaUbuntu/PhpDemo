@@ -31,6 +31,7 @@
                 $_SESSION['userPassword'] = $password;
             }
             $_SESSION['userName'] = explode(" ", $userDetails['full_name'])[0];
+            $_SESSION['userID'] = $userDetails['id'];
             if(isset($_SESSION['url']))
             {
                header("Location:".$_SESSION['url'], TRUE);
