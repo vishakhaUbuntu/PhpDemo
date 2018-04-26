@@ -34,7 +34,7 @@ include_once './staticHeaded.php';
         <div class="container">
             <h4><b>'.$row[item_name].'</b></h4>
         <p>'.$row[price].'</p> 
-            <input type="number" name="qty" pattern="/^(0|[1-9]\d*)$/"></input>
+            <input type="number" name="qty" min="0" value="1" pattern="/^(0|[1-9]\d*)$/"></input>
             <button type="submit" id="Add" name="Add" onclick="loadDoc()">Add</button>
         </div>
         </div>

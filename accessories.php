@@ -8,17 +8,24 @@ include_once './staticHeaded.php';
     </head>
     <body>
         <script>
-        function loadDoc()
-        {
-            <?php  
-            if(isset($_GET['Add'])){
-            session_start();
-            $_SESSION['count'] = $_SESSION['count'] + 1; 
-            echo 'document.getElementById("cartCount").innerHTML = '.$_SESSION['count']. ';';
-            }
-            ?>
-        }
+
+            function sendAjaxRequest() {
+                var $url = "sql/addProductsToDB.php";
+             var clickedButton = element;
+              $.ajax({type: "POST",
+                  url: $url,
+                  data: { quantity: 5 },
+                  success:function(result){
+                    alert('ok');
+                  },
+                 error:function(result)
+                  {
+                  alert('error');
+                 }
+             });
+     }
         </script>
+
         <h1>Accessories page called</h1> 
         <?php
         $con = mysql_connect("localhost", "root", "123456");
@@ -28,27 +35,18 @@ include_once './staticHeaded.php';
         echo '<div style="display: flex;">';
         while($row = mysql_fetch_assoc($result))
         {
-            echo '<form method="GET">
-                 <div class="card">
+            echo '<form method="POST">
+                  <div class="card">
                   <img src="data:image/jpeg;base64,'.base64_encode($row[image]).'">
                   <div class="container">
                   <h4><b>'.$row[item_name].'</b></h4>
                   <p>'.$row[price].'</p> 
-                  <input type="number" name="qty" pattern="/^(0|[1-9]\d*)$/"></input>
-                  <button type="submit" id="Add" name="Add" onclick="loadDoc()">Add</button>
+                  <input type="number" name="qty" min="1" value="1" pattern="/^([1-9]\d*)$/"></input>
+                  <button type="submit" id="Add" name="Add" onclick="add()">Add</button>
                   </div>
-                 </div>
-                 </form>';
+                  </div>
+                  </form>';
         }
         ?>
-            
-        <!--<div class="card">
-            <img src="./imageRefs/accessories/accessory2.jpg" alt="Avatar" style="width:100%">
-            <div class="container">
-            <h4><b>Accessory 2</b></h4> 
-            <p>$300</p> 
-            <button id="Add">Add</button>
-        </div>
-        </div>-->            
     </body>
 </html>

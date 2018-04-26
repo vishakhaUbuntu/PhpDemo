@@ -11,10 +11,12 @@ include_once './register.php';
         <link rel="stylesheet" type="text/css" href="./css/welcomePage.css">
     </head>
     <body>
+      
       <div class="second">
             <div class="header">
                 <a href="index.php" style="text-decoration: none; color: white"><b>Shopping</b><span style="font-size: 50%;padding-top: 15px;padding-bottom: 10px;">.in</span></a>
-            <input type="text" style="width: 40%; height:10%; margin-top: 8px; padding: 5px; margin-left: 15px" placeholder="Search"> 
+                <input type="text" id="searchValue" style="width: 40%; height:10%; margin-top: 8px; padding: 5px; margin-left: 15px" placeholder="Search" onkeyup ="searchFunction(this.value)"> 
+                <!--<div id="livesearch" style="width: 200px; height: 200px; background-color: yellow; color: red">Som</div>-->
             <button style="background-color:darkorange; width:50px ;border: none; height: 10%; margin-top: 8px; padding: 5px; font-size: 0.6em;" class="fa fa-search"></button>
             </div>
         <div class="header">              
@@ -39,6 +41,55 @@ include_once './register.php';
             ?>
         </div>
         </div>
+        
+<!--        <script>
+          function searchFunction(str) {
+              var str = "acc";
+  if (str.length==0) { 
+    document.getElementById("livesearch").innerHTML="";
+    document.getElementById("livesearch").style.border="0px";
+    return;
+  }
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else {  // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+        document.getElementById("livesearch").innerHTML="";
+      document.getElementById("livesearch").innerHTML=this.responseText;
+      document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+    }
+  }
+  xmlhttp.open("GET","search.php?q="+str,true);
+  xmlhttp.send();
+}  
+    </script>        -->
+<!--//        function searchFunction(){
+//            alert "something";
+//        $con = mysql_connect("localhost", "root", "123456");
+//        mysql_select_db("test", $con);
+//        $query= "select * from imagestable where item_name LIKE ";
+//        $result=mysql_query($query, $con);
+//        echo '<div style="display: flex;">';
+//        while($row = mysql_fetch_assoc($result))
+//        {
+//            echo '<form method="GET">
+//                 <div class="card">
+//                  <img src="data:image/jpeg;base64,'.base64_encode($row[image]).'">
+//                  <div class="container">
+//                  <h4><b>'.$row[item_name].'</b></h4>
+//                  <p>'.$row[price].'</p> 
+//                  <input type="number" name="qty" pattern="/^(0|[1-9]\d*)$/"></input>
+//                  <button type="submit" id="Add" name="Add" onclick="loadDoc()">Add</button>
+//                  </div>
+//                 </div>
+//                 </form>';
+//        }
+//        }-->
+        
     </body>
 </html>
 
