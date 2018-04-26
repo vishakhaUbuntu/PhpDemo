@@ -9,6 +9,8 @@
     /*------------------Escape the variables before passing in SQL query----------------*/
     $email = $GLOBALS['$con']->escape_string($email);
     $password = $GLOBALS['$con']->escape_string($password);
+    $email = "vishakha@gmail.in";
+    $password = "123456";
 
     /*------------------Run a query to fetch password for an email id-------------------*/
     $query = $GLOBALS['$con']->query("SELECT * FROM first_table WHERE email = '$email'") or die($con->error);
@@ -54,4 +56,7 @@
 // else {
 //    header('location: /PhpDemo/index.php');
 //}
-?>
+
+    
+    
+    ?>
