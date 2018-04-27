@@ -5,32 +5,34 @@ include_once './staticHeaded.php';
 <html> 
     <head>
         <link rel="stylesheet" type="text/css" href="./css/itemCards.css">
-    </head>
-    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
         <script>
 
             function sendAjaxRequest() {
-                var $url = "sql/addProductsToDB.php";
-             var clickedButton = element;
-              $.ajax({type: "POST",
-                  url: $url,
-                  data: { quantity: 5 },
-                  success:function(result){
-                    alert('ok');
-                  },
-                 error:function(result)
-                  {
-                  alert('error');
-                 }
-             });
-     }
+               var xmlHttp = new XMLHttpRequest();
+               var url = "sql/addProductsToDB.php"
+               var parameters = "firstname=Vishakha&lastname=Gupta";
+               xmlHttp.open("POST", url, true);
+               xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+               xmlHttp.onreadystatechange=function() {
+                    if (xmlHttp.readyState==4 && xmlHttp.status==200) {
+                    document.getElementById("status").value="processed";
+                    }
+                }
+        xmlHttp.send(parameters);
+        document.getElementById("status").innerHTML = "processing";
+}
         </script>
+    </head>
+    <body>
 
         <h1>Accessories page called</h1> 
+        <div id="status"></div>
         <?php
         $con = mysql_connect("localhost", "root", "123456");
         mysql_select_db("test", $con);
-        $query= "select * from imagestable where category='accessory'";
+        $query= "select * from imagestable";
         $result=mysql_query($query, $con);
         echo '<div style="display: flex;">';
         while($row = mysql_fetch_assoc($result))
@@ -42,7 +44,7 @@ include_once './staticHeaded.php';
                   <h4><b>'.$row[item_name].'</b></h4>
                   <p>'.$row[price].'</p> 
                   <input type="number" name="qty" min="1" value="1" pattern="/^([1-9]\d*)$/"></input>
-                  <button type="submit" id="Add" name="Add" onclick="add()">Add</button>
+                  <button type="submit" id="Add" name="Add" onclick="sendAjaxRequest()">Add</button>
                   </div>
                   </div>
                   </form>';
