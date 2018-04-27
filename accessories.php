@@ -50,7 +50,7 @@ include_once './staticHeaded.php';
                   <h4><b>'.$row[item_name].'</b></h4>
                   <p>'.$row[price].'</p> 
                   <input type="number" name="qty" min="1" value="1" pattern="/^([1-9]\d*)$/"></input>
-                  <button type="submit" id="'.$row[id].'" name="Add">Add</button>
+                  <button type="submit" name="'.$row[id].'" name="Add">Add</button>
                   </div>
                   </div>
                   </form>';
