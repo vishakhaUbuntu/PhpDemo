@@ -28,33 +28,6 @@ $_SESSION['error'] = 0;
             }      
         }
     ?>
-<!--    <div class="loginDiv">
-        <div id="buttonDiv">  
-        <button id="buttonRegister" onclick="hideLogin();">Register</button>
-        <button id="buttonLogin" onclick="hideRegister();">Login</button>
-    </div>
-
-    <div id="formDiv">
-        Form for registration
-        <form id="register" action='index.php' method="post">
-            <i class="fa fa-user-o" style="color: turquoise" aria-hidden="true"><input type="text" name="fname" id="fname" placeholder="First Name" required></i><br>
-            <i class="fa fa-user-o" style="color: turquoise" aria-hidden="true"><input type="text" name="lname" id="lname" placeholder="Last Name" required></i><br>
-            <i class="fa fa-envelope" style="color: turquoise" aria-hidden="true"><input type="text" name="email" id="email" placeholder="Email" required></i><br>
-            <i class="fa fa-key" style="color: turquoise" aria-hidden="true"><input type="password" name="passwd" id="passwd" placeholder="Password" required></i><br>
-            <br><input class="submit" type="submit" style="background-color: turquoise;height: 35px;" value="Submit" name="Register" onclick="return Validate()"/>
-        </form>
-
-        Form for login
-        <form name="login" id="login" action='' method="post">
-            <i class="fa fa-envelope" style="color: turquoise" aria-hidden="true"><input type="text" name="emailLogin" id="emailLogin" placeholder="Email" required></i><br>
-            <i class="fa fa-key" style="color: turquoise" aria-hidden="true"><input type="password" name="passwdLogin" id="passwdLogin" placeholder="Password" required></i><br>
-            <br><input type="checkbox" name="remember" value="remember">Remember Me
-            <br><input class="submit" type="submit" style="background-color: turquoise;height: 35px;" value="Submit" name="Login" onclick="return loginValidate()"/>
-        </form>
-    </div>
-</div>-->
-<!-- Button to open the modal login form -->
-<!--<button onclick="document.getElementById('id01').style.display='block'">Login</button>-->
 
 <!-- The Modal -->
 <div id="id01" class="modal">

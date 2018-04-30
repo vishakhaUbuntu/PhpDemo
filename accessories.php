@@ -1,5 +1,6 @@
 <?php
 include_once './staticHeaded.php';
+include_once './register.php';
 ?> 
 <!DOCTYPE html>
 <html> 
@@ -41,7 +42,7 @@ include_once './staticHeaded.php';
         <?php
         $con = mysql_connect("localhost", "root", "123456");
         mysql_select_db("test", $con);
-        $query= "select * from imagestable";
+        $query= "select * from imagestable where category = 'accessory'";
         $result=mysql_query($query, $con);
         echo '<div style="display: flex;">';
         while($row = mysql_fetch_assoc($result))
@@ -53,7 +54,7 @@ include_once './staticHeaded.php';
                   <h4><b>'.$row[item_name].'</b></h4>
                   <p>'.$row[price].'</p> 
                   <input type="number" name="qty" min="1" value="1" pattern="/^([1-9]\d*)$/"></input>
-                  <button type="submit" value="'.$row[id].'" name="Add">Add</button>
+                  <button type="submit" value="'.$row[id].'" name="Add" onclick="document.getElementById(\'id01\').style.display=\'block\'">Add</button>
                   </div>
                   </div>
                   </form>';

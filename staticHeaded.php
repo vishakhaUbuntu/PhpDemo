@@ -15,6 +15,7 @@ include_once './register.php';
         <?php
         include_once './sql/connection.php';
           $userId = $_SESSION['userID'];
+          if($userId != null){
           $query = $GLOBALS['$con']->query("SELECT orderID FROM ORDERS WHERE userId = $userId AND status = 0") or die($GLOBALS['$con']->error);
           $orderExist = $query->fetch_assoc();
           $orderId = $orderExist['orderID'];
@@ -26,6 +27,7 @@ include_once './register.php';
           }
           else{
               unset($_SESSION['count']);
+          }
           }
         ?>
       <div class="second">
