@@ -5,7 +5,7 @@ include_once './staticHeaded.php';
 <html> 
     <head>
         <link rel="stylesheet" type="text/css" href="./css/itemCards.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>       
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->       
 <!--        <script>
 
             function sendAjaxRequest() {
@@ -31,6 +31,10 @@ include_once './staticHeaded.php';
             require './sql/connection.php';
             if(isset($_POST['Add']))
                 require './sql/addProductsToDB.php';
+            
+            session_start();
+            echo $_SESSION['count'];
+            echo '<script>document.getElementById(\'cartCount\').innerHTML =' .$_SESSION['count'].'</script>';
         }
         ?>
 
@@ -38,7 +42,7 @@ include_once './staticHeaded.php';
         <?php
         $con = mysql_connect("localhost", "root", "123456");
         mysql_select_db("test", $con);
-        $query= "select * from imagestable where category = 'accessory'";
+        $query= "select * from imagestable";
         $result=mysql_query($query, $con);
         echo '<div style="display: flex;">';
         while($row = mysql_fetch_assoc($result))
@@ -50,7 +54,7 @@ include_once './staticHeaded.php';
                   <h4><b>'.$row[item_name].'</b></h4>
                   <p>'.$row[price].'</p> 
                   <input type="number" name="qty" min="1" value="1" pattern="/^([1-9]\d*)$/"></input>
-                  <button type="submit" name="'.$row[id].'" name="Add">Add</button>
+                  <button type="submit" value="'.$row[id].'" name="Add">Add</button>
                   </div>
                   </div>
                   </form>';

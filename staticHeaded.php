@@ -31,8 +31,7 @@ include_once './register.php';
             }
             ?>         
             <button style="background-color:transparent; border: none; margin-left: 10px; height: 10%; margin-top: 8px; padding: 2px; text-align: left; color: white; font-size: 0.9em;"><i class="fa fa-shopping-cart" style="color: white;"></i><span style="font-size: 0.5em"><b>Cart</b></span></button>
-            <p id="cartCount" style="background-color:transparent; border: none; margin-left: 2px; height: 10%; margin-top: 8px; text-align: left; color: white; font-size: 0.9em;"><?php session_start(); echo $_SESSION['count']; ?></p>
-            <!--<p style="background-color:transparent; border: none; margin-left: 10px; height: 10%; margin-top: 8px; padding: 2px; text-align: left; color: white; font-size: 0.9em;"><?php // session_start(); $_SESSION['cartCount'] = 1; echo $_SESSION['cartCount'];?></p>-->
+            <p id="cartCount" style="background-color:transparent; border: none; margin-left: 2px; height: 10%; margin-top: 8px; text-align: left; color: white; font-size: 0.9em;"><?php session_start(); if(isset($_SESSION['count'])){echo $_SESSION['count'];} ?></p>
             <?php if($_SESSION['loggedIn'] && $_SESSION['userName'] != ""){
                 session_start();
                 $_SESSION['logout'] = true;
