@@ -12,6 +12,22 @@ include_once './register.php';
     </head>
     <body>
       
+        <?php
+        include_once './sql/connection.php';
+          $userId = $_SESSION['userID'];
+          $query = $GLOBALS['$con']->query("SELECT orderID FROM ORDERS WHERE userId = $userId AND status = 0") or die($GLOBALS['$con']->error);
+          $orderExist = $query->fetch_assoc();
+          $orderId = $orderExist['orderID'];
+          
+          if($orderId != null){
+          $query = $GLOBALS['$con']->query("SELECT COUNT(productID) from ORDERS_DETAILS where orderID = $orderId") or die($GLOBALS['$con']->error);
+          $productCount = $query->fetch_assoc();
+          $_SESSION['count'] = $productCount['COUNT(productID)'];
+          }
+          else{
+              unset($_SESSION['count']);
+          }
+        ?>
       <div class="second">
             <div class="header">
                 <a href="index.php" style="text-decoration: none; color: white"><b>Shopping</b><span style="font-size: 50%;padding-top: 15px;padding-bottom: 10px;">.in</span></a>

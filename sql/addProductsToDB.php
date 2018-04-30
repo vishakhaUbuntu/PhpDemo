@@ -1,10 +1,10 @@
 <?php
 include_once './connection.php';
 session_start();
-$userId = 7;//$_SESSION['userID'];
+$userId = $_SESSION['userID'];
 $status = 0;
-$productId = 1;//$_POST['Add'];
-$quantity = 2;//$_POST['qty'];
+$productId = $_POST['Add'];
+$quantity = $_POST['qty'];
 $query = $GLOBALS['$con']->query("SELECT orderID FROM ORDERS WHERE userId = $userId AND status = $status") or die($con->error);
 $orderExist = $query->fetch_assoc();
 

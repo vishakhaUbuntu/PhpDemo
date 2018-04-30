@@ -33,7 +33,6 @@ include_once './staticHeaded.php';
                 require './sql/addProductsToDB.php';
             
             session_start();
-            echo $_SESSION['count'];
             echo '<script>document.getElementById(\'cartCount\').innerHTML =' .$_SESSION['count'].'</script>';
         }
         ?>
