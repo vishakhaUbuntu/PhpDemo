@@ -5,34 +5,61 @@ include_once './sql/connection.php';
 <!DOCTYPE html>
 <html> 
     <head>
-        <link rel="stylesheet" type="text/css" href="./css/itemCards.css">
+        <!--<link rel="stylesheet" type="text/css" href="./css/itemCards.css">-->
     </head>
     <body>
-        <h1>Cart page called</h1> 
-
-        
+        <h1 style="margin-left: 45%; margin-right: 30%;">Cart page called</h1> 
         <?php
-//        $con =mysql_connect("localhost", "root", "123456");
-//        mysql_select_db("test", $con);
-//        $query= "select * from imagestable where category='mobile'";
-//        $result=mysql_query($query, $con);
-//        echo '<div style="display: flex;">';
-//        while($row = mysql_fetch_assoc($result))
-//        {
-//        echo '<form method="GET"><div class="card">
-//            <img src="data:image/jpeg;base64,'.base64_encode($row[image]).'">
-//        <div class="container">
-//            <h4><b>'.$row[item_name].'</b></h4>
-//        <p>'.$row[price].'</p> 
-//            <input type="number" name="qty" pattern="/^(0|[1-9]\d*)$/"></input>
-//            <button type="submit" id="Add" name="Add" onclick="loadDoc()">Add</button>
-//        </div>
-//        </div>
-//        </form>';
-//        }
+        $orderID = 1;
+        $con = mysql_connect("localhost", "root", "123456");
+        mysql_select_db("test", $con);
+        $query= "select imagestable.id,imagestable.image,imagestable.item_name,imagestable.quantity as actual,imagestable.price,ORDERS_DETAILS.quantity from imagestable join ORDERS_DETAILS on imagestable.id = ORDERS_DETAILS.productID where ORDERS_DETAILS.orderID = $orderID;";
+        $result=mysql_query($query, $con);
+        echo '<table style="width: 100%;">
+              <tbody>';
+        while($row = mysql_fetch_assoc($result))
+        {
+            if($row[actual] < $row[quantity]){
+                $message = "Only ".$row[actual]." items left in stock";
+                $checkout = 0;
+            }
+            else{
+                $message = "";
+                $checkout = 1;
+            }
+            echo '<tr>
+                  <th><img style="width:50px; height:50px" src="data:image/jpeg;base64,'.base64_encode($row[image]).'"></th>
+                  <td style="width:20%"><p>'.$row[item_name].'</p></td>
+                  <td style="width:20%"><p>'.$row[quantity].'</p></td>
+                  <td style="width:20%"><p>'.$row[price].'</p></td>
+                  <td style="width:10%; color:red;"><p>'.$message.'</p></td>
+                  </tr>';
+            $priceTotal += ($row[price]*$row[quantity]); 
+        }
+        echo '<tr>
+              <td style="width:20%"><p></p></td>
+              <td style="width:20%"><p></p></td>
+              <td style="width:20%"><b>Total</b></td>
+              <td style="width:20%"><b>'.$priceTotal.'</b></td>
+              </tr>
+              </tbody>
+              </table>'
         ?>
-        <button>Checkout</button>
+        <br><br>
+        <div  style="text-align: center">
+        <?php
+        if($checkout == 0){
+        echo '
+             <button type="button" disabled>Checkout</button>
+             <div style="color:red">You cannot proceed and few items in you cart are out of stock</div>';
+        }
+        else{
+            echo '<button onclick="location.href=\'address.php\';">Checkout</button>';
+        }
+        ?>
+        </div>
         
+        <!--Put all table creations code in one page-->
         <!--Code to create tables if they don't exist-->
         <?php
             //Orders table

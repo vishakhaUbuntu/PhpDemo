@@ -12,20 +12,6 @@ $_SESSION['error'] = 0;
 </head>
 
 <body>
-    <?php
-        if($_SERVER['REQUEST_METHOD'] == 'POST')
-        {
-            require './sql/connection.php';
-            if(isset($_POST['Login'])){
-                require './sql/getFromDatabase.php';
-            }
-
-            if(isset($_POST['Register'])){
-                require './sql/addToDatabase.php';
-            }      
-        }
-    ?>
-
     <!-- The Modal for Login-->
         <div id="id01" class="modal">
           <span onclick="document.getElementById('id01').style.display='none'" 
@@ -49,7 +35,7 @@ $_SESSION['error'] = 0;
             </div>
 
             <div class="container" style="background-color:#f1f1f1">
-              <button type="button" id="cancelLogin" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <button type="button" id="cancelLogin" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
               <span class="psw"><a onclick="hideLogin()">Register</a></span>
             </div>
           </form>
@@ -157,6 +143,20 @@ class="close" title="Close Modal">&times;</span>
             xhttp.send("emailLogin=vishakha@ayoga.in&passwdLogin=123456");
     }           
 </script>
+<?php
+        if($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+            require './sql/connection.php';
+            if(isset($_POST['Login'])){
+                require './sql/getFromDatabase.php';
+            }
+
+            if(isset($_POST['Register'])){
+                require './sql/addToDatabase.php';
+            }      
+        }
+    ?>
+
 </body>
 </html>
 

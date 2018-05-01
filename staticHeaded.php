@@ -1,5 +1,10 @@
 <?php
 include_once './register.php';
+if(!isset($_SESSION['userID']))
+{
+    echo '<script>document.getElementById(\'id01\').style.display=\'block\'</script>';
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -48,7 +53,7 @@ include_once './register.php';
                 echo '<button type="button" style="background-color:transparent; border: none; margin-left: 12%; height: 5%; margin-top: 8px; padding: 5px; text-align: left; color: white" onclick="document.getElementById(\'id01\').style.display=\'block\'">Sign In</button>';
             }
             ?>         
-            <button style="background-color:transparent; border: none; margin-left: 10px; height: 10%; margin-top: 8px; padding: 2px; text-align: left; color: white; font-size: 0.9em;"><i class="fa fa-shopping-cart" style="color: white;"></i><span style="font-size: 0.5em"><b>Cart</b></span></button>
+            <button style="background-color:transparent; border: none; margin-left: 10px; height: 10%; margin-top: 8px; padding: 2px; text-align: left; color: white; font-size: 0.9em;" onclick="location.href='cart.php';"><i class="fa fa-shopping-cart" style="color: white;"></i><span style="font-size: 0.5em"><b>Cart</b></span></button>
             <p id="cartCount" style="background-color:transparent; border: none; margin-left: 2px; height: 10%; margin-top: 8px; text-align: left; color: white; font-size: 0.9em;"><?php session_start(); if(isset($_SESSION['count'])){echo $_SESSION['count'];} ?></p>
             <?php if($_SESSION['loggedIn'] && $_SESSION['userName'] != ""){
                 session_start();

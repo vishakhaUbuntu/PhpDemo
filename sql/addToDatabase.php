@@ -31,6 +31,7 @@ if(checkForStrings($first_name) && checkForStrings($last_name) && checkForEmails
          $_SESSION['loggedIn'] = true;
          $_SESSION['lastActivity'] = time();
          $_SESSION['userName'] = $first_name;
+         $_SESSION['userID'] = $userDetails['id'];
 //         header('Location: /PhpDemo/error.php');
       }
       else {
