@@ -15,7 +15,7 @@ if($orderExist == null)
       if($query){
           $query = $GLOBALS['$con']->query("SELECT orderID FROM ORDERS WHERE userId = $userId AND status = 0") or die($GLOBALS['$con']->error);
           $orderExist = $query->fetch_assoc();
-          $orderId = $orderExist['orderID'];
+          $_SESSION['orderId'] = $orderExist['orderID'];
           
           //Insert product details in order_details table using order id generated
           $query = $GLOBALS['$con']->query("INSERT INTO ORDERS_DETAILS (orderID,productID, quantity) 
@@ -27,7 +27,7 @@ if($orderExist == null)
 }
 else
 {
-    $orderId = $orderExist['orderID'];
+    $_SESSION['orderId'] = $orderExist['orderID'];
     
     $query = $GLOBALS['$con']->query("SELECT * FROM ORDERS_DETAILS WHERE productID = $productId AND orderID = $orderId") or die($GLOBALS['$con']->error);
     $productExist = $query->fetch_assoc();

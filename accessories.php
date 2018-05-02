@@ -13,7 +13,7 @@ include_once './staticHeaded.php';
         <?php
         $con = mysql_connect("localhost", "root", "123456");
         mysql_select_db("test", $con);
-        $query= "select * from imagestable";
+        $query= "select * from imagestable where category = 'accessory'";
         $result=mysql_query($query, $con);
         echo '<div style="display: flex;">';
         while($row = mysql_fetch_assoc($result))

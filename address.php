@@ -18,6 +18,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             userID, fullName, mobileNO, pinCode, address1, address2, landmark, city, state) 
                     VALUES ('1', '$full_name', '$mobile', '$pin', '$address1', '$address2', '$landmark', '$city', '$state')") or die($GLOBALS['$con']->error);
     }
+    
+    if(isset($_POST['Address'])){
+        echo 'Address post called';
+        $order = $_SESSION['orderId'];
+        $query = $GLOBALS['$con']->query("UPDATE ORDERS SET address = $addressId
+                WHERE orderID = $order") or die($GLOBALS['$con']->error);
+    if($query == false)
+    {
+        echo 'Something went wrong';
+    }
+    }
 }
 
 ?>
@@ -33,21 +44,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         mysql_select_db("test", $con);
         $query= "select * from addressBook";
         $result=mysql_query($query, $con);
-        echo '<div style="width: 50%; height: 40%; background-color: red; display: flex;">';
+        echo '<br><div style="width: 50%; height: 40%; display: flex; flex-wrap: wrap;">';
         while($row = mysql_fetch_assoc($result))
         {
-            echo '<div style="background-color:purple; margin: 1%; padding: 1%; width: 25%">
+            echo '<div style="margin: 1%; padding: 1%; width: 25%; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
                   <h4><b>'.$row[fullName].'</b></h4>
                   <p>'.$row[address1].', '.$row[address2].', '.$row[city].', '.$row[state].'</p>
                   <p>Landmark: '.$row[landmark].'</p>
                   <p>Pin: '.$row[pinCode].'</p>
                   <p>Contact No: '.$row[mobileNO].'</p>
-                  <button type="submit" value="'.$row[id].'" name="Add">Select</button>
+                  <form method=POST><button type="submit" value="'.$row[addressID].'" name="Address">Select</button></form>
                   </div>';
         }
         echo '</div>';
         ?>
-        <div style="width: 50%; background-color: yellow">
+        <div style="width: 50%;">
             <h4 style="text-align: center;">Add a new address</h4><br>
             <form name="login" id="login" action='' method="POST">
             Full Name<span style="color: red">*</span><br><input type="text" id="name" name="name" required><br><br>
@@ -62,6 +73,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             </form>  
         </div>
     </div>
+        <button>Proceed</button>
 
         <script>
         function addAddress()

@@ -35,8 +35,8 @@ $_SESSION['error'] = 0;
             </div>
 
             <div class="container" style="background-color:#f1f1f1">
-                <button type="button" id="cancelLogin" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-              <span class="psw"><a onclick="hideLogin()">Register</a></span>
+                <!--<button type="button" id="cancelLogin" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>-->
+              <button type="button" class="cancelbtn"><a onclick="hideLogin()">Register</a></button>
             </div>
           </form>
         </div>   
@@ -68,8 +68,8 @@ class="close" title="Close Modal">&times;</span>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-        <button type="button" id="cancelRegister" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-    <span class="psw"><a onclick="hideRegister()">Login</a></span>
+        <!--<button type="button" id="cancelRegister" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>-->
+    <button type="button" class="cancelbtn"><a onclick="hideRegister()">Login</a></button>
     </div>
   </form>
 </div>
